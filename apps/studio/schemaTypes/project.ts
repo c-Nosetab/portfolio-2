@@ -62,6 +62,12 @@ export const project = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'client',
+      title: 'Client',
+      type: 'string',
+      description: 'Client/organization name for client work',
+    }),
+    defineField({
       name: 'timeline',
       title: 'Timeline',
       type: 'string',

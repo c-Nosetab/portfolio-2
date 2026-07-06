@@ -7,19 +7,23 @@ interface CoverImageProps {
   cover?: SanityImage | null;
   title: string;
   className?: string;
+  /** next/image sizes hint; defaults to full viewport width. */
+  sizes?: string;
 }
 
 /**
  * Typographic fallback treatments (Kinetic Editorial). A project without a
  * cover gets a deliberate editorial object: its title set large on one of
- * four subtle paper/ink/cobalt plates, picked deterministically from the
- * title so it never shifts between renders.
+ * four plates, picked deterministically from the title so it never shifts
+ * between renders. Every treatment uses theme-flipping tokens so the plate
+ * stays visible against the page background in BOTH light and dark schemes
+ * (raw `bg-ink` plates disappear on the dark `#16161A` background).
  */
 const FALLBACK_TREATMENTS = [
-  "bg-ink text-paper",
-  "bg-cobalt text-paper",
+  "bg-foreground text-background",
+  "bg-accent text-paper",
   "bg-foreground/5 text-foreground",
-  "bg-ink text-cobalt-bright",
+  "bg-accent/10 text-accent",
 ] as const;
 
 function titleHash(title: string): number {
@@ -30,13 +34,14 @@ function titleHash(title: string): number {
   return hash;
 }
 
-export function CoverImage({ cover, title, className }: CoverImageProps) {
+export function CoverImage({ cover, title, className, sizes }: CoverImageProps) {
   if (cover?.asset) {
     return (
       <Image
         src={urlFor(cover).width(1200).height(675).fit("crop").url()}
         width={1200}
         height={675}
+        sizes={sizes ?? "100vw"}
         alt={`${title} cover image`}
         className={["w-full h-auto rounded-none", className]
           .filter(Boolean)

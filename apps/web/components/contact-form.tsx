@@ -184,6 +184,7 @@ export function ContactForm() {
 
         {status === "error" && errorMessage && (
           <p
+            id="contact-form-error"
             role="alert"
             className="border-l-2 border-accent pl-4 text-sm leading-relaxed text-foreground"
           >
@@ -192,7 +193,15 @@ export function ContactForm() {
         )}
 
         <div>
-          <button type="submit" className={BUTTON}>
+          <button
+            type="submit"
+            aria-describedby={
+              status === "error" && errorMessage
+                ? "contact-form-error"
+                : undefined
+            }
+            className={BUTTON}
+          >
             {status === "submitting" ? "Sending" : "Send message"}
           </button>
         </div>

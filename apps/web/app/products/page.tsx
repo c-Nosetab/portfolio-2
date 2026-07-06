@@ -113,7 +113,7 @@ export default async function ProductsPage() {
 
         <Reveal className="mt-16 md:mt-20">
           <Link href="/work" className={`${TEXT_LINK} text-sm`}>
-            See how they&apos;re built
+            See the work
           </Link>
         </Reveal>
       </div>

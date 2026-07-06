@@ -20,7 +20,8 @@ const CARD_PROJECTION = /* groq */ `{
   tags,
   links,
   cover,
-  publishedAt
+  publishedAt,
+  timeline
 }`;
 
 /** All non-draft projects, ordered, card shape. */

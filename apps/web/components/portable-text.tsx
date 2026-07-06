@@ -7,6 +7,7 @@ import {
 
 import { urlFor } from "@/lib/sanity/image";
 import type { SanityImage } from "@/lib/sanity/types";
+import { stripBannedDashesDeep } from "@/lib/text";
 
 /**
  * Server-rendered Portable Text for case study bodies (Kinetic Editorial:
@@ -88,5 +89,7 @@ const components: PortableTextComponents = {
 };
 
 export function CustomPortableText({ value }: { value: PortableTextBlock[] }) {
-  return <PortableText value={value} components={components} />;
+  return (
+    <PortableText value={stripBannedDashesDeep(value)} components={components} />
+  );
 }

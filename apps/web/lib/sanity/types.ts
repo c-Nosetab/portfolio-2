@@ -49,12 +49,12 @@ export interface ProjectCard {
   links?: ProjectLinks | null;
   cover?: SanityImage | null;
   publishedAt?: string | null;
+  timeline?: string | null;
 }
 
 /** Full case study shape returned by PROJECT_BY_SLUG_QUERY. */
 export interface ProjectFull extends ProjectCard {
   role?: string | null;
-  timeline?: string | null;
   outcome?: string | null;
   metrics?: Metric[] | null;
   demo?: string | null;

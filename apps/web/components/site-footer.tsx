@@ -4,7 +4,8 @@ const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent";
 
 /**
- * Editorial minimal footer. Public links only (GitHub, LinkedIn); contact
+ * Editorial minimal footer. Public links only (GitHub; LinkedIn once the
+ * real profile URL exists); contact
  * info is never rendered here (hard security constraint - email is gated
  * behind Turnstile on /contact).
  */
@@ -31,13 +32,9 @@ export function SiteFooter() {
             >
               GitHub
             </a>
-            {/* TODO(chris): replace with the real LinkedIn profile URL */}
-            <a
-              href="#"
-              className={`text-foreground/70 transition-colors hover:text-foreground ${FOCUS_RING}`}
-            >
-              LinkedIn
-            </a>
+            {/* TODO(chris): add LinkedIn here once the real profile URL is
+                in hand - omitted for now so the site ships no dead links
+                (same approach as /about). */}
             <Link
               href="/contact"
               className={`font-medium text-accent underline-offset-4 hover:underline ${FOCUS_RING}`}

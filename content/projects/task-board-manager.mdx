@@ -1,0 +1,62 @@
+---
+title: "Task Board Manager"
+slug: "task-board-manager"
+type: "experiment"
+featured: false
+order: 2
+summary: "A kanban-style task board with drag-and-drop columns, priorities, and due dates — built to show Angular + Express full-stack range and containerized deployment."
+role: "Full-stack (frontend, API, deployment)"
+timeline: "2025"
+stack:
+  - "Angular 20+"
+  - "TypeScript"
+  - "Angular CDK (drag & drop)"
+  - "Express.js / Node.js"
+  - "SCSS custom design system"
+  - "Docker + Kubernetes"
+  - "nginx"
+tags:
+  - "Full-stack"
+  - "Angular"
+  - "Kanban"
+  - "API"
+  - "DevOps"
+links:
+  live: "https://kanban-demo-production.up.railway.app/dashboard"
+  source: "https://github.com/c-Nosetab/kanban-demo"
+  writeup: ""
+cover: "/og/task-board-manager.png"
+demo: "image"
+publishedAt: "2025-01-01"
+---
+
+## Overview
+
+Task Board Manager is a kanban-style task app — columns, cards, drag-and-drop, priorities, and due dates. I built it as a portfolio demo specifically to show a different half of my toolkit: **Angular on the frontend and Express on the backend**, deliberately contrasting the Next.js/NestJS stack behind [Squirrel Away](./squirrel-away.mdx). Same TypeScript rigor, different frameworks.
+
+## What it shows
+
+**Angular component architecture.** Standalone components, typed models/interfaces, routing, a service layer, and Angular CDK powering the drag-and-drop between columns.
+
+**Express API design.** A clean REST surface for task CRUD plus status moves and a reset-to-seed endpoint:
+
+```
+GET    /api/tasks           # list
+POST   /api/tasks           # create
+PUT    /api/tasks/:id       # update
+DELETE /api/tasks/:id       # delete
+PUT    /api/tasks/:id/move  # move to another status/column
+POST   /api/tasks/reset     # reset to initial data
+```
+
+**Deployment awareness.** The repo ships with a Dockerfile, docker-compose, nginx config, and Kubernetes manifests — the app is containerized and deploys to Railway.
+
+**UI/UX.** A custom SCSS design system, responsive layout, modal forms for task creation/editing, and priority + due-date support on cards.
+
+## Why it's in the portfolio
+
+Range. Squirrel Away proves depth in the React/Next ecosystem; this proves I'm equally comfortable in Angular and can stand up a containerized, deployable full-stack app end to end.
+
+---
+
+**TODO before publish:** add 2–3 screenshots (board view, drag-in-progress, task modal), confirm the Railway demo loads and seed data is present, add cover/OG image. Note: repo README still lists some business logic as skeleton/TODO — verify the live demo's current feature state and adjust copy so it matches what actually works.

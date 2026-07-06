@@ -1,0 +1,61 @@
+---
+title: "WagerVault"
+slug: "wagervault"
+type: "product"
+featured: false
+order: 5
+summary: "A universal (iOS/Android/Web) mobile app for tracking gambling sessions, bankroll, and performance — with a personal-vs-global RTP engine, charted analytics, and year-end tax estimation. In active development."
+role: "Founder / mobile full-stack (product, design, app, backend)"
+timeline: "2025–present (in active development)"
+formerly: "Gamble Tracker"
+stack:
+  - "Expo (React Native)"
+  - "Expo Router"
+  - "React 19 / React Native"
+  - "NativeWind (Tailwind)"
+  - "Supabase (Auth, Postgres, Storage)"
+  - "React Native Reanimated"
+  - "react-native-gifted-charts"
+  - "react-native-web (universal)"
+tags:
+  - "Product"
+  - "Mobile"
+  - "React Native"
+  - "Data Viz"
+  - "Analytics"
+links:
+  live: ""
+  source: "https://github.com/c-Nosetab/wager-vault"
+  writeup: ""
+cover: "/og/wagervault.png"
+demo: "image"
+publishedAt: "2025-06-15"
+---
+
+## Overview
+
+**WagerVault** (formerly Gamble Tracker) is a data-centric mobile app for people who want granular insight into their gambling habits — tracking spend, session outcomes, and performance over time. It logs bankroll, bonuses, jackpots, and progressives; visualizes win/loss trends; computes personal *and* global Return-to-Player (RTP); and estimates year-end federal taxes from handpays. Built as a universal app, it runs on iOS, Android, and web from one codebase.
+
+## Why it's in the portfolio
+
+It's the mobile entry — proof I ship native cross-platform, not just web. It also shows product breadth: a real analytics engine, sensitive-data handling, and a considered brand (a split between `wagervault.app` for the product and `wagervault.casino` for community/responsible-gaming content).
+
+## What it does
+
+- **Session tracking** — log casino + machine, initial buy-in, additions, and cash-out; capture bonuses (Hold & Spin, Free Spins, etc.) with denom, bet, and return; record handpays with photo uploads; note progressive states (Mini → Grand).
+- **RTP engine** — calculates personal and global RTP by casino, machine type, and even specific machine ID, plus bonus frequency and average bonus RTP.
+- **Analytics dashboard** — charted win/loss amounts, ratios, and percentages over time (via `react-native-gifted-charts`).
+- **Tax tracking** — aggregates calendar-year handpays and estimates federal tax owed, with explicit "not a tax service" disclaimers.
+- **Privacy + community** — per-item Personal/Public controls (tax-form photos forced private), plus an aggregated global "last jackpot hit" feed.
+
+## Architecture
+
+An **Expo / React Native** app using **Expo Router** for file-based, typed navigation (grouped auth and tab routes), styled with **NativeWind**. The backend is **Supabase** — auth, Postgres (with migrations in-repo), and storage for image uploads. Animations run on **Reanimated**; the UI uses a custom type system (Space Grotesk + JetBrains Mono) for a data-forward feel.
+
+## What it demonstrates
+
+Cross-platform mobile development from one TypeScript codebase, a non-trivial analytics/RTP computation layer, thoughtful handling of sensitive financial data and privacy, and product/brand thinking around a regulated, responsible-gaming-conscious domain.
+
+---
+
+**TODO before publish:** add device-frame screenshots (dashboard, session log, RTP view), record a short demo video (not yet in app stores), add cover/OG image. **Featured candidate** once a demo exists — it's the only mobile piece and adds real range. Keep copy factual and neutral given the gambling subject; keep the responsible-gaming framing visible.

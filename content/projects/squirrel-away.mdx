@@ -1,0 +1,85 @@
+---
+title: "Squirrel Away"
+slug: "squirrel-away"
+type: "product"
+featured: true
+order: 1
+summary: "A cloud document-management app with AI-powered search, OCR text extraction, and real-time file processing — Google Drive-like, built full-stack in TypeScript."
+role: "Full-stack (design, frontend, backend, infra)"
+timeline: "2024–2025"
+stack:
+  - "Next.js 14 (App Router, RSC)"
+  - "React 19"
+  - "TypeScript"
+  - "NestJS 11"
+  - "PostgreSQL + Drizzle ORM"
+  - "Redis + BullMQ"
+  - "Cloudflare R2"
+  - "Tailwind CSS + shadcn/ui"
+  - "Turborepo"
+tags:
+  - "Full-stack"
+  - "AI"
+  - "Search"
+  - "OCR"
+  - "API"
+  - "SaaS"
+outcome: "Started as a technical evaluation project and grew into a production-grade DMS: direct-to-cloud uploads, a hybrid OCR + AI search pipeline, and a background job queue — all in a type-safe TypeScript monorepo."
+metrics:
+  - label: "Codebase"
+    value: "97% TypeScript"
+  - label: "OCR pipeline"
+    value: "3-stage hybrid"
+  - label: "Architecture"
+    value: "Turborepo monorepo"
+links:
+  live: "https://web-production-95e65.up.railway.app/login"
+  source: "https://github.com/c-Nosetab/dms-evaluation"
+  writeup: ""
+cover: "/og/squirrel-away.png"
+demo: "image"
+publishedAt: "2025-01-01"
+---
+
+## Outcome
+
+Squirrel Away began as a technical evaluation project — and turned into something I actually like using. It's a full-stack, production-grade document management system with Google Drive-like functionality: nested folders, sharing, starring, trash recovery, and a search that reads *inside* your documents via a hybrid OCR + AI pipeline. Everything is TypeScript, end to end, in a Turborepo monorepo.
+
+## Problem
+
+Document management sounds simple until you hit the real requirements: uploads that don't choke the API server, search that finds text inside scanned PDFs and images, and long-running processing (OCR, format conversion) that can't block the request cycle. The goal was to build all of it to a production bar, not a demo bar.
+
+## Approach & architecture
+
+**Direct-to-cloud uploads.** Files stream directly between the browser and Cloudflare R2 using presigned URLs. The API only issues URLs and stores metadata, so upload bandwidth never bottlenecks the server.
+
+**Type-safe data layer.** Drizzle ORM gives end-to-end TypeScript safety with types inferred from the schema — no runtime shape mismatches between DB, API, and frontend.
+
+**Async processing with BullMQ.** OCR, PDF splitting, and image conversion run in Redis-backed background workers. The UI polls for real-time 0–100% progress instead of hanging on long jobs.
+
+**Hybrid OCR strategy.** Fast text extraction from digital PDFs first, Tesseract.js fallback for scanned documents, and OpenAI Vision for the hardest cases — plus AI-generated descriptions that make uploaded images searchable by content.
+
+## What I built
+
+- File management: nested folders with breadcrumbs, soft delete + trash recovery, starring, recent files, grid/list toggle, fully responsive.
+- Full-text search across filenames *and* extracted document text.
+- File-processing queue: PDF page splitting, image format conversion (PNG/JPEG/WebP), thumbnail generation, exponential-backoff retries with job prioritization.
+- Auth via NextAuth v5 (Google + GitHub OAuth).
+- A CSS-variable theming system with warm branded palette and light/dark mode.
+
+## API surface
+
+```
+Files:       POST/GET/PATCH/DELETE /files, /files/search, /files/recent, /files/starred
+Folders:     POST/GET/PATCH/DELETE /folders, /folders/:id/breadcrumb
+Processing:  POST /processing/files/:id/ocr | /split | /convert
+Health:      GET /health (DB + Redis connectivity)
+```
+
+## What it demonstrates
+
+Full-stack proficiency (Next.js + NestJS in one TypeScript monorepo), cloud architecture (S3-compatible storage, Redis queues, PostgreSQL), practical AI integration with a local fallback, and production patterns — auth, soft deletes, job queues, error handling — with UI/UX polish on top.
+
+---
+
+**TODO before publish:** add 3–4 screenshots (dashboard, upload flow, AI search result, mobile view), confirm the live demo login (Google/GitHub OAuth) works for visitors, and decide whether to gate or seed a demo account.

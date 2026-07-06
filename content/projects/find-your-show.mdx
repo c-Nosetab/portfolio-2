@@ -1,0 +1,71 @@
+---
+title: "Find Your Show"
+slug: "find-your-show"
+type: "product"
+featured: true
+order: 4
+summary: "A directory-first platform connecting audiences, venues, and performers in live entertainment — full-stack TypeScript monorepo with a custom theatrical design system. In active development."
+role: "Founder / full-stack (product, design, frontend, backend)"
+timeline: "2025–present (in active development)"
+tagline: "Find Your Show. It's closer than you think."
+stack:
+  - "Next.js 15"
+  - "React 19"
+  - "Tailwind CSS v4 + Shadcn UI"
+  - "NestJS 11"
+  - "Drizzle ORM + PostgreSQL"
+  - "Better-Auth"
+  - "Cloudflare R2"
+  - "Turborepo monorepo"
+  - "Vitest + Playwright"
+  - "OpenAPI / Swagger"
+tags:
+  - "Product"
+  - "Full-stack"
+  - "Marketplace"
+  - "Design System"
+  - "Next.js"
+  - "API"
+links:
+  live: ""
+  source: "https://github.com/c-Nosetab/find-your-show"
+  writeup: ""
+cover: "/og/find-your-show.png"
+demo: "image"
+publishedAt: "2025-06-01"
+---
+
+## Overview
+
+**Find Your Show** is a directory platform connecting audiences, venues, and performers across the live-entertainment industry — local theater, music, comedy, and more. The bet is a **directory-first** model: aggregate and surface information and link out to existing ticketing/services rather than becoming another transactional middleman. It's my own product, in active development.
+
+> *Find Your Show. It's closer than you think — support your local spotlight.*
+
+## Why it's in the portfolio
+
+This is the project that shows product thinking, not just execution. It demonstrates how I approach an app end to end: a clear positioning decision (directory-first over transactions), a distinctive design system, a properly architected full-stack codebase, and a phased roadmap toward monetization.
+
+## Design system
+
+The interface is deliberately **warm and theatrical** — not corporate, not generic template. It runs on a documented token system: a burgundy "curtain" primary, brass gold accents, coral "spotlight" highlights, on a parchment base, with DM Serif Display for headlines, Crimson Pro for body, and Outfit for UI. The design system lives in-repo (`system.md`, `patterns.md`, `components.md`, `implementation.md`) so the look stays consistent as the app grows.
+
+## Architecture
+
+A **Turborepo monorepo** with clean separation:
+
+- `apps/web` — **Next.js 15 / React 19**, Tailwind v4, Shadcn UI.
+- `apps/api` — **NestJS 11** with **Drizzle ORM** over **PostgreSQL**, documented via OpenAPI/Swagger.
+- `packages/shared` — shared TypeScript types across front and back for end-to-end type safety.
+- Auth via **Better-Auth**, file storage on **Cloudflare R2**.
+
+## Engineering discipline
+
+The repo is built like a real product, not a demo: **Vitest** unit tests and **Playwright** E2E, strict TypeScript, ESLint/Prettier, an `all-checks` gate (typecheck → test → lint → build), and a structured, phased implementation plan — core directory, then monetization (subscriptions), audience accounts, company teams/permissions, multi-venue support, and auditions.
+
+## What it demonstrates
+
+Product ownership from concept to code: positioning and IA decisions, a bespoke design system, a full-stack TypeScript monorepo with tested, documented APIs, and the discipline to build something maintainable and extensible over multiple phases.
+
+---
+
+**TODO before publish:** stand up a hosted demo or a walkthrough video (not currently deployed), capture screenshots showing the theatrical design system, add cover/OG image, and decide how much of the roadmap/monetization plan to show publicly.

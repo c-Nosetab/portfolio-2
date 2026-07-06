@@ -1,0 +1,64 @@
+---
+title: "Pioneer District Website"
+slug: "bhs-pioneer-website"
+type: "client"
+featured: true
+order: 3
+summary: "The public website for the Pioneer District of the Barbershop Harmony Society — designed and built solo, and now being re-platformed from Gatsby to a Next.js 15 + Sanity monorepo. Live in production since 2020."
+role: "Solo — design, build, and re-platform"
+timeline: "2020–present (v1 Gatsby live; v2 Next.js 15 in progress)"
+client: "Pioneer District Association of Chapters (Barbershop Harmony Society)"
+stack:
+  - "Next.js 15 (App Router, RSC)"
+  - "React 18"
+  - "TypeScript (strict)"
+  - "Tailwind CSS v4"
+  - "Sanity v3 (GROQ)"
+  - "React Hook Form + Zod"
+  - "Stripe · Resend · Google Maps"
+  - "pnpm monorepo · Vercel CI/CD"
+tags:
+  - "Client"
+  - "Web"
+  - "CMS"
+  - "Next.js"
+  - "Migration"
+  - "Design"
+links:
+  live: "https://www.pioneerdistrict.org/"
+  source: "https://github.com/c-Nosetab/bhs-pioneer-website"
+  writeup: ""
+cover: "/og/bhs-pioneer-website.png"
+demo: "embed"
+publishedAt: "2024-01-01"
+---
+
+## Overview
+
+The public website for the **Pioneer District of the Barbershop Harmony Society** — a real organization with chapters, choruses, quartets, conventions, and decades of history to surface. I designed and built the whole thing solo (my name's in the footer), it's been live in production since 2020, and I'm now re-platforming it from Gatsby to Next.js 15.
+
+## The brief
+
+A volunteer-run music organization needed a site non-technical board members could keep current — events, news, convention info, award and history archives — without touching code, while also handling real donations and growing its mailing list.
+
+## v1 — Gatsby + Sanity (2020–present, live)
+
+The deployed site is a static-generated **Gatsby** front end pulling structured content from **Sanity** via GraphQL. Editors manage news, events, and pages in Sanity's Studio while the site stays fast and secure. It wires in **Stripe** for "Give to Pioneer" donations, **Mailchimp** for email signups, and YouTube for live convention streams, over a deep information architecture (Leadership, Find a Chorus, News & Events, Education, and an extensive History/Hall of Fame section).
+
+## v2 — Next.js 15 re-platform (in progress)
+
+A ground-up rebuild on a modern stack, kept on the `v2-pio-website` branch, structured as a **pnpm monorepo**:
+
+- `apps/web` — **Next.js 15** App Router (Server Components), **TypeScript strict**, **Tailwind v4**, ISR, forms with **React Hook Form + Zod**.
+- `apps/studio` — **Sanity Studio v3** (same project `hgayog7e`), **15 content types** — Events (with an approval workflow), News, Choruses (with geolocation), Hall of Fame, District/International Champs, Scoresheets, Board Members, dynamic NavBar, and more.
+- Integrations upgraded: **Stripe**, **Resend** for email, **Google Maps** for the chorus directory.
+- **CI/CD** to **Vercel** (web) and Sanity Studio, with preview deploys per branch.
+- Documented like a real project: a migration plan, architecture decision records, and a schema reference.
+
+## What it demonstrates
+
+Real, shipped, and *maintained* client work: solo design + build, a headless-CMS architecture that hands content control to non-technical users, payment and email integrations — and now a documented production migration from a legacy Gatsby stack to Next.js 15. The v1→v2 arc is a strong "then/now" case study: same product, evolved architecture, real users the whole way.
+
+---
+
+**TODO before publish:** decide on framing (single evolving project vs. a dedicated migration case study), add v1 and v2 screenshots for the before/after, confirm repo visibility (currently private), and add cover/OG image. Consider a short ADR-style callout on *why* Gatsby → Next.js.

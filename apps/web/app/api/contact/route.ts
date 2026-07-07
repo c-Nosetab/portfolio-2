@@ -53,8 +53,9 @@ export async function POST(request: Request) {
     );
   }
 
-  // Plain Resend REST call, no SDK. onboarding@resend.dev sender until the
-  // custom domain is verified.
+  // Plain Resend REST call, no SDK. From address is env-driven; set
+  // CONTACT_FROM after verifying a sending domain in Resend
+  // (e.g. "Chris Bateson <portfolio@send.cbateson.com>").
   const delivery = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -62,7 +63,7 @@ export async function POST(request: Request) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "Portfolio <onboarding@resend.dev>",
+      from: process.env.CONTACT_FROM ?? "Portfolio <onboarding@resend.dev>",
       to: [contactEmail],
       reply_to: email,
       subject: `Portfolio contact: ${projectType} from ${name}`,

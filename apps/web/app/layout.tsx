@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { switzer, jetbrainsMono } from "./fonts";
+import { SiteNav } from "@/components/site-nav";
+import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -20,7 +22,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${switzer.variable} ${jetbrainsMono.variable}`}>
       <body className="bg-background text-foreground font-sans antialiased">
-        {children}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-foreground focus:px-4 focus:py-2 focus:text-sm focus:text-background"
+        >
+          Skip to content
+        </a>
+        <SiteNav />
+        <div id="main-content">{children}</div>
+        <SiteFooter />
       </body>
     </html>
   );
